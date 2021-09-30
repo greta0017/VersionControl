@@ -32,9 +32,8 @@ namespace UserMaintenance
             this.listUsers = new System.Windows.Forms.ListBox();
             this.button1 = new System.Windows.Forms.Button();
             this.textbox1 = new System.Windows.Forms.TextBox();
-            this.textbox2 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listUsers
@@ -48,7 +47,7 @@ namespace UserMaintenance
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(468, 133);
+            this.button1.Location = new System.Drawing.Point(468, 60);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(283, 45);
             this.button1.TabIndex = 1;
@@ -63,13 +62,6 @@ namespace UserMaintenance
             this.textbox1.Size = new System.Drawing.Size(213, 27);
             this.textbox1.TabIndex = 2;
             // 
-            // textbox2
-            // 
-            this.textbox2.Location = new System.Drawing.Point(538, 62);
-            this.textbox2.Name = "textbox2";
-            this.textbox2.Size = new System.Drawing.Size(213, 27);
-            this.textbox2.TabIndex = 3;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -79,23 +71,23 @@ namespace UserMaintenance
             this.label1.TabIndex = 4;
             this.label1.Text = "label1";
             // 
-            // label2
+            // button2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(430, 65);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(50, 20);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "label2";
+            this.button2.Location = new System.Drawing.Point(468, 122);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(283, 45);
+            this.button2.TabIndex = 5;
+            this.button2.Text = "Fájlba írás";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(772, 442);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textbox2);
             this.Controls.Add(this.textbox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.listUsers);
@@ -111,9 +103,8 @@ namespace UserMaintenance
         private System.Windows.Forms.ListBox listUsers;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textbox1;
-        private System.Windows.Forms.TextBox textbox2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button2;
     }
 }
 
