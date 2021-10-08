@@ -55,5 +55,14 @@ namespace UserMaintenance
 
             
         }
+
+        private void buttonTORLES_Click(object sender, EventArgs e)
+        {
+            var del = listUsers.SelectedItem;
+            if (del !=null)
+            {
+                users.Remove((User)del);
+            }
+        }
     }
 }
