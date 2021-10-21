@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserMaintenance", "UserMain
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EXExport", "EXExport\EXExport.csproj", "{C1182995-842B-4D30-8B21-011F71DC9F5A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Week6", "Week6\Week6.csproj", "{5D650CEB-A808-405C-B096-E4763BC0C2B7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{C1182995-842B-4D30-8B21-011F71DC9F5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1182995-842B-4D30-8B21-011F71DC9F5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1182995-842B-4D30-8B21-011F71DC9F5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D650CEB-A808-405C-B096-E4763BC0C2B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D650CEB-A808-405C-B096-E4763BC0C2B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D650CEB-A808-405C-B096-E4763BC0C2B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D650CEB-A808-405C-B096-E4763BC0C2B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
