@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace Week6
         List<Tick> ticks;
         PortfolioEntities port = new PortfolioEntities();
         List<PortfolioItem> Portfolio = new List<PortfolioItem>();
-
+        List<decimal> nyereségekRendezve = new List<decimal>();
         public Form1()
         {
             InitializeComponent();
@@ -37,7 +38,7 @@ namespace Week6
                 Console.WriteLine(i + " " + ny);
             }
 
-            var nyereségekRendezve = (from x in Nyereségek
+            nyereségekRendezve = (from x in Nyereségek  //var nem kell az elejére mert form 1 szinten létrehozva
                                       orderby x
                                       select x)
                                         .ToList();
@@ -66,6 +67,23 @@ namespace Week6
                 value += (decimal)last.Price * item.Volume; //value t megnövelem az egyenlőség utáni szöveggel
             }
             return value;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sav = new SaveFileDialog();
+            if (sav.ShowDialog()==DialogResult.OK)
+            {
+                
+                StreamWriter str = new StreamWriter(sav.FileName);
+                str.WriteLine("Időszak;Nyereség");
+                for (int i = 0; i < nyereségekRendezve.Count(); i++)
+                {
+                    str.WriteLine(i+";"+nyereségekRendezve[i]); //x.ik időszak értéke
+                }
+               
+
+            } 
         }
     }
 }
