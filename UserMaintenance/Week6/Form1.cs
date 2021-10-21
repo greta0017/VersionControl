@@ -23,6 +23,8 @@ namespace Week6
             ticks = port.Tick.ToList();
             dataGridView1.DataSource = ticks; //select * from tick
             CreatePortfolio();
+
+            
         }
 
         void CreatePortfolio()
@@ -32,6 +34,21 @@ namespace Week6
             Portfolio.Add(new PortfolioItem() { Index = "ELMU", Volume = 10 });
 
             dataGridView2.DataSource = Portfolio;
+        }
+
+        private decimal GetPortfolioValue(DateTime date)
+        {
+            decimal value = 0;
+            foreach (var item in Portfolio) //portolion megy végig
+            {
+                var last = (from x in ticks // ticks táblából kérdez le
+                            where item.Index == x.Index.Trim() //trim előtte utána lévő space-ket kivágja
+                               && date <= x.TradingDay
+                            select x)
+                            .First();
+                value += (decimal)last.Price * item.Volume; //value t megnövelem az egyenlőség utáni szöveggel
+            }
+            return value;
         }
     }
 }
