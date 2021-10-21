@@ -15,7 +15,7 @@ namespace EXExport
     public partial class Form1 : Form
     {
 
-        List<Flat> li;
+        List<Flat> li; //Flat típusú elemekből álló listára mutató referencia
         RealEstateEntities real = new RealEstateEntities();  //példányosítás
 
         Excel.Application xlApp; // A Microsoft Excel alkalmazás
@@ -39,7 +39,7 @@ namespace EXExport
 
         void LoadData()
         {
-            li = real.Flats.ToList();
+            li = real.Flats.ToList(); // select *, real-maga kapcsolat, flats táblából
         }
 
         void CreateExcel()
