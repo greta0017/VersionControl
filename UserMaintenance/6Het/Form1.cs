@@ -41,7 +41,8 @@ namespace _6Het
             chartArea.AxisX.MajorGrid.Enabled = false;
             chartArea.AxisY.MajorGrid.Enabled = false;
             chartArea.AxisY.IsStartedFromZero = false;
-
+            var legend = chartRateData.Legends[0];
+            legend.Enabled = false;
 
 
         }
