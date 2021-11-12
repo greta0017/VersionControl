@@ -26,7 +26,7 @@ namespace _8het.Abstractions
         public abstract void DrawImage(Graphics graph);
         
 
-        public void MoveBall()
+        public void MoveToy()
         {
             this.Left++;
         }

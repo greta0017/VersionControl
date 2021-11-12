@@ -1,4 +1,5 @@
-﻿using _8het.Entities;
+﻿using _8het.Abstractions;
+using _8het.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,11 +14,11 @@ namespace _8het
 {
     public partial class Form1 : Form
     {
-        List<Ball> _balls = new List<Ball>();
+        List<Toy> _toys = new List<Toy>();
 
-        private BallFactory factory;
+        private IToyFactory factory;
 
-        public BallFactory Factory
+        public IToyFactory Factory
         {
             get { return factory; }
             set { factory = value; }
@@ -26,13 +27,13 @@ namespace _8het
         public Form1()
         {
             InitializeComponent();
-            Factory = new BallFactory();
+            Factory = new CarFactory();  //Ezen a ponton a konstruktorban levő BallFactory példányt bármikor átírhatod CarFactory-ra, és akkor labdák helyett autók jelennek majd meg a felületen, de visszaírva továbbra is működni fog a BallFactory is.
         }
 
         private void createTimer_Tick(object sender, EventArgs e)
         {
             var ball = Factory.CreateNew();
-            _balls.Add(ball);
+            _toys.Add(ball);
             mainPanel.Controls.Add(ball);
             ball.Left = ball.Width * (-1);
             
@@ -41,9 +42,9 @@ namespace _8het
         private void conveyorTimer_Tick(object sender, EventArgs e)
         {
             var maxPosition = 0;
-            foreach (var item in _balls)
+            foreach (var item in _toys)
             {
-                item.MoveBall();
+                item.MoveToy();
                 if (item.Left>maxPosition)
                 {
                     maxPosition = item.Left;
@@ -51,8 +52,8 @@ namespace _8het
             }
             if (maxPosition>1000)
             {
-                Ball ba = _balls.First(); //ua-> Ball ba =_balls[0];
-                _balls.Remove(ba);
+                Toy ba = _toys.First(); //ua-> Ball ba =_balls[0];
+                _toys.Remove(ba);
                 //form vezérlői - controls, feladat megfogalmazása rossz
                 mainPanel.Controls.Remove(ba);
             }
