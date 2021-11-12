@@ -5,18 +5,15 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace _8het.Entities
 {
-    public class Ball : Toy
+    class Car : Toy
     {
-      
-        public override void DrawImage(Graphics graph) 
+        public override void DrawImage(Graphics graph)
         {
-            graph.FillEllipse(new SolidBrush(Color.Blue), 0, 0, Width, Height);
+            Image imageFile = Image.FromFile("Images/car.png");
+            graph.DrawImage(imageFile, new Rectangle(0, 0, Width, Height));
         }
-
-   
     }
 }
