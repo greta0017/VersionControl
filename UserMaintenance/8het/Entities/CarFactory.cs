@@ -11,8 +11,8 @@ namespace _8het.Entities
     {
         public Toy CreateNew()
         {
-            Ball ball = new Ball();
-            return ball;
+            Car car = new Car();
+            return car;
         }
     }
 }

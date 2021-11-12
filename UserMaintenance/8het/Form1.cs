@@ -18,6 +18,8 @@ namespace _8het
 
         private IToyFactory factory;
 
+        Toy _nextToy;
+
         public IToyFactory Factory
         {
             get { return factory; }
@@ -57,6 +59,21 @@ namespace _8het
                 //form vezérlői - controls, feladat megfogalmazása rossz
                 mainPanel.Controls.Remove(ba);
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Factory = new CarFactory();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Factory = new BallFactory();
+        }
+
+        void DisplayNext()
+        {
+
         }
     }
 }
