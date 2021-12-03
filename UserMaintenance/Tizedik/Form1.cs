@@ -19,11 +19,17 @@ namespace Tizedik
         List<BirthProbability> BirthProbabilities = new List<BirthProbability>();
         List<DeathProbability> DeathProbabilities = new List<DeathProbability>();
 
+        Random random = new Random(1234);
 
         public Form1()
         {
             InitializeComponent();
 
+            Population = Elso(@"C:\Temp\nép.csv");
+            BirthProbabilities = Masodik(@"C:\Temp\születés.csv");
+            DeathProbabilities = Harmadik(@"C:\Temp\halál.csv");
+
+            Evek();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -93,7 +99,28 @@ namespace Tizedik
             return population;
         }
 
+        public void Evek()
+        {
+            for (int ev = 2005; ev < 2025; ev++)
+            {
+                for (int nep = 0; nep < Population.Count(); nep++)
+                {
 
+                }
+
+                int nbrOfMales = (from x in Population
+                                  where x.Gender == Gender.Male && x.IsAlive
+                                  select x).Count();
+                int nbrOfFemales = (from x in Population
+                                    where x.Gender == Gender.Female && x.IsAlive
+                                    select x).Count();
+
+               // Console.WriteLine(
+                //string.Format("Év:{0} Fiúk:{1} Lányok:{2}", ev, nbrOfMales, nbrOfFemales));
+            }
+
+
+        }
 
     }
 }
