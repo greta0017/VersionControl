@@ -105,7 +105,7 @@ namespace Tizedik
             {
                 for (int nep = 0; nep < Population.Count(); nep++)
                 {
-
+                    SimStep();
                 }
 
                 int nbrOfMales = (from x in Population
@@ -120,6 +120,40 @@ namespace Tizedik
             }
 
 
+        }
+
+        public void SimStep(int ev, Person p)
+        {
+            if (p.IsAlive == false) return;
+            int kora = ev - p.BirthYear;
+
+            double halal = (from x in DeathProbabilities
+                            where x.Age==kora
+                            select x.P).FirstOrDefault();
+
+            
+            if (random.NextDouble()<halal)
+            {
+                p.IsAlive = false;
+                return;
+            }
+            if (p.Gender == Gender.Male) return;
+
+            double szulet =(from x in BirthProbabilities
+                            where x.Age == kora
+                            select x.P).FirstOrDefault();
+
+            if (random.NextDouble()<szulet)
+            {
+                Person uj = new Person();
+
+                uj.BirthYear = ev;
+                uj.IsAlive = true;
+                uj.NbrOfChildren = 0;
+                uj.Gender = (Gender)random.Next(1, 3);
+
+                Population.Add(uj);
+            }
         }
 
     }
