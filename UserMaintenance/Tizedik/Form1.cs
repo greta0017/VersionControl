@@ -19,6 +19,9 @@ namespace Tizedik
         List<BirthProbability> BirthProbabilities = new List<BirthProbability>();
         List<DeathProbability> DeathProbabilities = new List<DeathProbability>();
 
+        List<int> ferfiak = new List<int>();
+        List<int> nok = new List<int>();
+
         Random random = new Random(1234);
 
         public Form1()
@@ -29,12 +32,13 @@ namespace Tizedik
             BirthProbabilities = Masodik(@"C:\Temp\születés.csv");
             DeathProbabilities = Harmadik(@"C:\Temp\halál.csv");
 
-            Evek();
+           
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         public List<Person> Elso(string a)
@@ -101,11 +105,15 @@ namespace Tizedik
 
         public void Evek()
         {
-            for (int ev = 2005; ev < 2025; ev++)
+            richTextBox1.Clear();
+            ferfiak.Clear();
+            nok.Clear();
+
+            for (int ev = 2005; ev < numericUpDown1.Value; ev++)
             {
                 for (int nep = 0; nep < Population.Count(); nep++)
                 {
-                    SimStep();
+                    SimStep(ev, Population[nep]);
                 }
 
                 int nbrOfMales = (from x in Population
@@ -115,15 +123,21 @@ namespace Tizedik
                                     where x.Gender == Gender.Female && x.IsAlive
                                     select x).Count();
 
+                ferfiak.Add(nbrOfMales);
+                nok.Add(nbrOfFemales);
+               
+
                // Console.WriteLine(
                 //string.Format("Év:{0} Fiúk:{1} Lányok:{2}", ev, nbrOfMales, nbrOfFemales));
             }
 
-
+            DisplayResults();
         }
 
         public void SimStep(int ev, Person p)
         {
+            
+
             if (p.IsAlive == false) return;
             int kora = ev - p.BirthYear;
 
@@ -154,7 +168,37 @@ namespace Tizedik
 
                 Population.Add(uj);
             }
+            
         }
 
+        public void DisplayResults()
+        {
+            for (int i =2005; i < numericUpDown1.Value; i++)
+            {
+                int szamlalo = i - 2005;
+
+                richTextBox1.Text += "Szimulációs év: " + i + "\n" +
+                    "\t" + ferfiak[szamlalo] + "\n" +
+                    "\t" + nok[szamlalo] + "\n";
+
+            }
+
+        }
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog open = new OpenFileDialog();
+
+            if (open.ShowDialog()==DialogResult.OK)
+            {
+                textBox1.Text = open.FileName;
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Evek();
+        }
     }
 }
